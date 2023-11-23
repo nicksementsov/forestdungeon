@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://d03bu21l81fh6"]
+
+[ext_resource type="Texture2D" uid="uid://bfij45gecbt6m" path="res://Sprites/door_closed_north.png" id="1"]
+[ext_resource type="Script" path="res://Scripts/Door.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://bcswp8rj7h84b" path="res://Sprites/door_open_north.png" id="3"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(128, 64)
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(28, 64)
+
+[sub_resource type="RectangleShape2D" id="3"]
+size = Vector2(28, 64)
+
+[sub_resource type="RectangleShape2D" id="5"]
+size = Vector2(72, 64)
+
+[sub_resource type="RectangleShape2D" id="4"]
+size = Vector2(72, 24)
+
+[sub_resource type="RectangleShape2D" id="6"]
+size = Vector2(40, 30)
+
+[node name="Door" type="StaticBody2D"]
+script = ExtResource("2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(0, -32)
+shape = SubResource("1")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(-50, 32)
+shape = SubResource("2")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(50, 32)
+shape = SubResource("3")
+
+[node name="Blocker" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(0, 32)
+shape = SubResource("5")
+
+[node name="Transition" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Transition"]
+position = Vector2(0, 12)
+shape = SubResource("4")
+
+[node name="DoorClosedNorth" type="Sprite2D" parent="."]
+texture = ExtResource("1")
+
+[node name="DoorOpenNorth" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3")
+
+[node name="Switch" type="Area2D" parent="."]
+position = Vector2(0, 44)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Switch"]
+shape = SubResource("6")
+metadata/_edit_lock_ = true
+
+[connection signal="area_entered" from="Transition" to="." method="_on_Area2D_area_entered"]

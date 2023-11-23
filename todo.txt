@@ -1,0 +1,5 @@
+TODO:
+
+Add "key" scene
+
+Check if player has key when opening door

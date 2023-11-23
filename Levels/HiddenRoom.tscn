@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://uj01l3q5upbg"]
+
+[ext_resource type="PackedScene" uid="uid://d03bu21l81fh6" path="res://Scenes/Door.tscn" id="1"]
+
+[node name="HiddenRoom" type="Node2D"]
+
+[node name="SpawnPoint" type="Node2D" parent="."]
+position = Vector2(715, 394)
+
+[node name="Door" parent="." instance=ExtResource("1")]
+position = Vector2(441, 235)
+rotation = -1.57079
+destination = "TestLevel"

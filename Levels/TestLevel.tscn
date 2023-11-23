@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnkdgndlte534"]
+
+[ext_resource type="PackedScene" uid="uid://d03bu21l81fh6" path="res://Scenes/Door.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://Scenes/HealthPickup.tscn" id="2"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(251, 64)
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(136.5, 103.75)
+
+[node name="TestLevel" type="Node2D"]
+
+[node name="Door" parent="." instance=ExtResource("1")]
+position = Vector2(857, 343)
+destination = "HiddenRoom"
+
+[node name="SpawnPoint" type="Node2D" parent="."]
+position = Vector2(858, 492)
+rotation = 3.14159
+
+[node name="walls" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls"]
+position = Vector2(961, 205)
+shape = SubResource("1")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="walls"]
+position = Vector2(427.5, 510.75)
+shape = SubResource("2")
+
+[node name="HealthPickup" parent="." instance=ExtResource("2")]
+position = Vector2(639, 371)
+
+[node name="HealthPickup2" parent="." instance=ExtResource("2")]
+position = Vector2(768, 590)
+
+[node name="HealthPickup3" parent="." instance=ExtResource("2")]
+position = Vector2(1038, 435)
+
+[node name="Door2" parent="." instance=ExtResource("1")]
+position = Vector2(1086, 555)
+rotation = 1.5708
+destination = "TestLevel"
